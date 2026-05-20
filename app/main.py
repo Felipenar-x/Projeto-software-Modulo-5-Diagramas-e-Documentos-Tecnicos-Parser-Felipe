@@ -1,13 +1,21 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.schemas import ParseRequest, ParseResponse
+from app.schemas import (
+    ParseRequest,
+    ParseResponse,
+    ApiDocumentationRequest,
+    ApiDocumentationResponse
+)
+
 from app.services.java_parser import parse_java_code
+from app.services.api_parser import parse_api_endpoints
+
 
 app = FastAPI(
     title="DoculA Parser API",
-    description="Microsserviço responsável por analisar código-fonte e extrair informações para geração de diagramas UML.",
-    version="1.0.0"
+    description="Microsserviço responsável por analisar código-fonte e extrair informações para geração de diagramas UML e documentação de API.",
+    version="0.4.0"
 )
 
 app.add_middleware(
@@ -23,7 +31,8 @@ app.add_middleware(
 def health_check():
     return {
         "status": "ok",
-        "service": "docula-parser-api"
+        "service": "docula-parser-api",
+        "version": "0.4.0"
     }
 
 
@@ -33,4 +42,13 @@ def parse_class(request: ParseRequest):
 
     return {
         "classes": parsed_classes
+    }
+
+
+@app.post("/parse/api", response_model=ApiDocumentationResponse)
+def parse_api_documentation(request: ApiDocumentationRequest):
+    endpoints = parse_api_endpoints(request.source_code)
+
+    return {
+        "endpoints": endpoints
     }
