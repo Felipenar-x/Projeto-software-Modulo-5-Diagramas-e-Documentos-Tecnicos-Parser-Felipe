@@ -12,8 +12,15 @@ class ParsedClass(BaseModel):
     methods: List[str]
 
 
+class ParsedRelationship(BaseModel):
+    from_class: str
+    to_class: str
+    type: str
+
+
 class ParseResponse(BaseModel):
     classes: List[ParsedClass]
+    relationships: List[ParsedRelationship]
 
 
 class ApiDocumentationRequest(BaseModel):

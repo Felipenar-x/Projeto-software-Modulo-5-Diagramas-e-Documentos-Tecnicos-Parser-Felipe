@@ -38,12 +38,9 @@ def health_check():
 
 @app.post("/parse/class", response_model=ParseResponse)
 def parse_class(request: ParseRequest):
-    parsed_classes = parse_java_code(request.source_code)
+    parsed_result = parse_java_code(request.source_code)
 
-    return {
-        "classes": parsed_classes
-    }
-
+    return parsed_result
 
 @app.post("/parse/api", response_model=ApiDocumentationResponse)
 def parse_api_documentation(request: ApiDocumentationRequest):
