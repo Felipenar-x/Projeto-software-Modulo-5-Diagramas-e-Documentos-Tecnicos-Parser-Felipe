@@ -38,7 +38,7 @@ Gateway API
 Parser API
    ↓
 Diagram API
-````
+```
 
 Fluxo completo dentro do Módulo 5:
 
@@ -579,7 +579,7 @@ O projeto utiliza versionamento semântico.
 Versão atual:
 
 ```txt
-v0.3.0
+v1.0.0
 ```
 
 Histórico inicial:
@@ -589,4 +589,5 @@ v0.1.0 - Primeira versão funcional do Parser API com extração de classes, atr
 v0.1.1 - Preparação para deploy Azure
 v0.2.0 - Adição da extração de endpoints REST para documentação de API
 v0.3.0 - Adição de relacionamentos UML, herança, interfaces e associações entre classes
+v1.0.0 - Versão final do Parser API para entrega do Módulo 5
 ```
