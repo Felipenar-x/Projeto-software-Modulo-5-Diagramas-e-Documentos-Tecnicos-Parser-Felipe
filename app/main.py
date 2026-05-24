@@ -15,7 +15,7 @@ from app.services.api_parser import parse_api_endpoints
 app = FastAPI(
     title="DoculA Parser API",
     description="Microsserviço responsável por analisar código-fonte e extrair informações para geração de diagramas UML e documentação de API.",
-    version="0.4.0"
+    version="1.0.0"
 )
 
 app.add_middleware(
